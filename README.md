@@ -1,111 +1,51 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fdjango&demo-title=Django%20%2B%20Vercel&demo-description=Use%20Django%204%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fdjango-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994241/random/django.png)
 
-# Django + Vercel
+# Welcome to the **Cash Flow Minimizer System** README!!
 
-This example shows how to use Django 4 on Vercel with Serverless Functions using the [Python Runtime](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python).
+## **Deployment Link**: [Live website](http://13.127.192.36/)
 
-## Demo
+This system is designed to minimize the **number of transactions** among multiple banks spread across different corners of the world. These banks often use **different modes of payment**, and a **world bank** with access to all payment modes acts as an intermediary for banks that have no common mode of payment. The system optimizes the transaction process and ensures smooth, efficient fund transfers.
 
-https://django-template.vercel.app/
+---
 
-## How it Works
+## **How to Use?**
 
-Our Django application, `example` is configured as an installed application in `api/settings.py`:
+The system is completely **menu-driven** and is implemented in **C++**. Once the application is executed, the system will guide you step-by-step and generate the optimized transactions as the final output.
 
-```python
-# api/settings.py
-INSTALLED_APPS = [
-    # ...
-    'example',
-]
-```
+### **Steps to Execute the Application**:
+1. Run the C++ Application from the command line.
+2. Follow the on-screen instructions to input the required data.
+3. The system will process the inputs and display the optimized cash flow between banks.
 
-We allow "\*.vercel.app" subdomains in `ALLOWED_HOSTS`, in addition to 127.0.0.1:
+### **Example Execution**:
 
-```python
-# api/settings.py
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
-```
+Below is a screenshot of the example execution process:
 
-The `wsgi` module must use a public variable named `app` to expose the WSGI application:
+![image](https://user-images.githubusercontent.com/54183085/110011598-a33f9280-7d45-11eb-9499-a2868924cefd.png)
 
-```python
-# api/wsgi.py
-app = get_wsgi_application()
-```
+---
 
-The corresponding `WSGI_APPLICATION` setting is configured to use the `app` variable from the `api.wsgi` module:
+## **File Format Details**
 
-```python
-# api/settings.py
-WSGI_APPLICATION = 'api.wsgi.app'
-```
+The system expects input data in the form of text files. Below is the format for the input files:
 
-There is a single view which renders the current time in `example/views.py`:
+### **1.txt** (Bank Information)
 
-```python
-# example/views.py
-from datetime import datetime
-
-from django.http import HttpResponse
-
-
-def index(request):
-    now = datetime.now()
-    html = f'''
-    <html>
-        <body>
-            <h1>Hello from Vercel!</h1>
-            <p>The current time is { now }.</p>
-        </body>
-    </html>
-    '''
-    return HttpResponse(html)
-```
-
-This view is exposed a URL through `example/urls.py`:
-
-```python
-# example/urls.py
-from django.urls import path
-
-from example.views import index
-
-
-urlpatterns = [
-    path('', index),
-]
-```
-
-Finally, it's made accessible to the Django server inside `api/urls.py`:
-
-```python
-# api/urls.py
-from django.urls import path, include
-
-urlpatterns = [
-    ...
-    path('', include('example.urls')),
-]
-```
-
-This example uses the Web Server Gateway Interface (WSGI) with Django to enable handling requests on Vercel with Serverless Functions.
-
-## Running Locally
-
-```bash
-python manage.py runserver
-```
-
-Your Django application is now available at `http://localhost:8000`.
-
-## One-Click Deploy
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fdjango&demo-title=Django%20%2B%20Vercel&demo-description=Use%20Django%204%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fdjango-template.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994241/random/django.png)
+- The first line contains the number of banks.
+- Each subsequent line contains:
+  - Bank name.
+  - Number of payment modes.
+  - The list of payment modes for that bank.
 
 ## txt files will be as in this format
+1.txt\
+6-no of banks\
+bank-noof payment modes-type of modeo of payment\
+B 3 1 2 3\
+C 2 1 2\
+D 1 2\
+E 2 1 3\
+F 1 3\
+
 2.txt\
 9-no of transactions\
 debt cred amt\
@@ -118,19 +58,36 @@ F E 10\
 B C 40\
 C D 20\
 D E 50\
-1.txt\
-6-no of banks\
-bank-noof payment modes-type of modeo of payment\
-B 3 1 2 3\
-C 2 1 2\
-D 1 2\
-E 2 1 3\
-F 1 3\
-G 2 2 3
 
+## **System Workflow**
 
-## working
-<img width="944" alt="image" src="https://github.com/MaheshPulivarthi18/django-hello-world/assets/134507390/7f6ea2e8-3ca0-4538-81ea-7644dea9b570">
+The system minimizes the number of transactions by consolidating them through a world bank. Banks with different payment modes use the world bank to facilitate transactions. The world bank ensures efficient fund transfers between banks with no common payment modes.
 
+Below is a visual representation of the system workflow:
 
-ui with very attractive hover effects and glass card effects
+![Workflow Diagram](https://github.com/user-attachments/assets/401e5dce-82da-429e-b5ba-51c8685ad7cc)
+
+---
+
+## **User Interface**
+
+The system features a **clean and modern user interface** with **hover effects** and **glass card effects** that provide an intuitive experience for users. The UI has been designed with attention to detail, creating an interactive environment for users to efficiently navigate through the application.
+
+### **Key Features**:
+- **Attractive Hover Effects**: Elements on the screen respond to user interaction with smooth hover effects.
+- **Glass Card Design**: Glassmorphism is used to create modern, visually appealing UI cards that display information in a clear, stylish manner.
+
+---
+
+## **Deployment**
+
+This system is deployed using **Gunicorn** and **Nginx**, ensuring robust and efficient server performance. Below is a brief overview of the deployment stack:
+
+- **Gunicorn**: Used as a WSGI HTTP server to serve the C++ application in production.
+- **Nginx**: Acts as a reverse proxy server that distributes requests and handles static content delivery, ensuring scalability and high availability.
+
+---
+
+We hope this README provides you with a comprehensive overview of the **Cash Flow Minimizer System**. For any further questions or support, feel free to reach out!
+
+Enjoy optimizing transactions!
